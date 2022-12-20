@@ -207,9 +207,21 @@ console.log(finances[minIndex][0])
 console.log(min);
 
 
+// To add all these results to the the HTML page we need to use below functions 
 
+document.getElementById("monthTotal").innerHTML = finances.length
 
+document.getElementById("netProfit").innerHTML = total
 
+document.getElementById("averageProfit").innerHTML = (totalChanges - finances[0][1])/(finances.length - 1)
+
+document.getElementById("maxProfitMonth").innerHTML = finances[maxIndex][0]
+
+document.getElementById("maxProfitAmount").innerHTML = max
+
+document.getElementById("minProfitMonth").innerHTML = finances[minIndex][0]
+
+document.getElementById("minProfitAmount").innerHTML = min
 
 
 
