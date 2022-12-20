@@ -119,22 +119,39 @@ var change;
 // change = finances [i+1][i+1] - finances [i][i+1]; changes.push(change)   
 // }
 
-for (var i=0; i < finances.length; i++) {
-change = finances [i+1][i+1] - finances [i][i+1]; changes.push(change)   
+// for (var i=0; i < finances.length; i++) {
+//     change = finances [i+1][1] - finances [i][1]; changes.push(change)
+//     }
+
+//     console.log(changes);
+
+
+// The reason we were getting error for the above code is when we do i+1 it goes beyond array length so system is not able to find any value and gives us an error.
+// So we have to create another variable and avoid going beyond the scope of the array with i+1. 
+
+var net = 0;
+
+
+for (var i = 0; i < finances.length; i++) {
+    change = finances[i][1] - net;
+    net = finances[i][1];
+    changes.push(change);
 }
 console.log(changes);
 
+// In the above code the first iteration is: change = finances [i(0)][1]/867884 - 0 = 867884
+// net is then assigned as 867884
+// So the next iteration becomes change = finances [1][1]/984655 - net (assigned as finances [0][1]/867884 = 116771 (this is the correct first value for real change)
+// The only problem is that the first push into changes is finances[0][1] - 0, which isn't actually a change, so have to change this somehow.
+// I will try figure this out later.
 
+// The next step is to get the total of all the changes and divide this by the number of months by creating a new variable and dividing my the total number of months calculated above:
 
+var totalChanges = 0;
 
-
-
-
-
-
-
-
-
+for (i = 0; i < changes.length; i++) {
+    
+}
 
 
 // var change = 0;
