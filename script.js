@@ -126,7 +126,7 @@ var change;
 //     console.log(changes);
 
 
-// The reason we were getting error for the above code is when we do i+1 it goes beyond array length so system is not able to find any value and gives us an error.
+// The reason we were getting error for the above code is that when we do i+1 it goes beyond the length of the array so the system is not able to find any value and gives us an error.
 // So we have to create another variable and avoid going beyond the scope of the array with i+1. 
 
 var net = 0;
@@ -150,8 +150,70 @@ console.log(changes);
 var totalChanges = 0;
 
 for (i = 0; i < changes.length; i++) {
-    
+    totalChanges += changes[i]
 }
+
+console.log((totalChanges - finances[0][1])/(finances.length - 1));
+
+// So I think this is probably a really ugly way of getting to the solution. But I am removing the first undesirable result in my changes array by subtracting it from totalChanges.
+// I am also subtracting 1 from the number of months because I am trying to find the average of the changes between months, not the number of months.
+
+
+// I now need to find the greatest increase, and the greatest decrease in profit.
+
+// let max = Math.max.apply(null, changes);
+// console.log(max);
+
+// let min = Math.min.apply(null, changes);
+// console.log(min);
+
+// The above approach is fine for just returning the smallest, and the largest number in the changes array, but is not helpful for returning the month, or what index in the array this number was derived. 
+// I think a better way would be to iterate through the array again, and store the largest value found in a new variable called max. 
+
+// I've also realised that a much simpler and cleaner solution to what I though was ugly code above is just to start of i at 1, and have the first element of the second array element start at i - 1. 
+// I think this would also remove the need to introduce a whole other 'net' variable above. But seeing as I've done it already, I'll leave it be. 
+
+var max = 0;
+var maxIndex = -1;
+
+for (i=1; i < finances.length; i++){
+    let difference = finances[i][1] - finances [i-1][1] 
+    if (difference > max) {
+        max = difference;
+        maxIndex = i
+    }
+}
+
+console.log(maxIndex);
+console.log(finances[maxIndex][0])
+console.log(max);
+
+
+// For the second part, it is just the same but with storing the minimum 
+
+var min = 0;
+var minIndex = -1;
+
+for (i=1; i < finances.length; i++){
+    let difference = finances[i][1] - finances [i-1][1] 
+    if (difference < min) {
+        min = difference;
+        minIndex = i
+    }
+}
+
+console.log(minIndex);
+console.log(finances[minIndex][0])
+console.log(min);
+
+
+
+
+
+
+
+
+
 
 
 // var change = 0;
